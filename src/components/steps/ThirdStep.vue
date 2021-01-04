@@ -15,12 +15,14 @@
         <p>Choissiez la date de mise à jour attendue
             (pour envoyer une alerte en cas de non réalisation)</p>
         <SingleDatePicker :first-day-of-week=1 @selectDate="selectDate"/>
+    <p>{{formattedDate}}</p>
     </div>
         <Navigation></Navigation>
     </div>
 </template>
 <script>
 import SingleDatePicker from 'vue-single-date-picker';
+import { mapGetters } from 'vuex';
 import Steppers from '../Steppers.vue';
 import Navigation from '../Navigation.vue';
 
@@ -32,6 +34,8 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['formattedDate']),
+
     action: {
       get() {
         return this.$store.action;

@@ -2,7 +2,7 @@
   <div class="home">
     <h1 style="margin-bottom:20px">Bienvenue dans Niagara</h1>
      <v-btn
-        @click="addCard"
+        @click="$router.push({ name: 'firstStep' });"
         elevation="2"
         rounded
         color="primary"
@@ -20,11 +20,6 @@ export default {
   name: 'Home',
   components: {
     Card,
-  },
-  methods: {
-    addCard() {
-      this.$router.push('/card/1');
-    },
   },
 };
 </script>

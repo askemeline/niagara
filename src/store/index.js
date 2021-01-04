@@ -6,10 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     format: '',
-    nameCard: '',
-    selectDate: { year: '', month: '', date: '' },
+    nameCard: null,
+    selectDate: { year: null, month: null, date: null },
     team: '',
     action: '',
+    cards: [],
   },
   mutations: {
     setNameCard(state, payload) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     setAction(state, payload) {
       state.action = payload.actions;
     },
+  },
+  getters: {
+    formattedDate: (state) => (state.selectDate.year !== null && state.selectDate.month !== null && state.selectDate.date !== null ? `Vous avez selectionner le ${state.selectDate.date}/${state.selectDate.month + 1}/${state.selectDate.year}` : ''),
   },
   actions: {},
 });

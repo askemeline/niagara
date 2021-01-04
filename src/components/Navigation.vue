@@ -18,6 +18,7 @@ export default {
   data() {
     return {};
   },
+  computed: {},
   methods: {
     nextBtnTxt() {
       if (this.$route.name === 'thirdStep') {
@@ -29,23 +30,23 @@ export default {
     navigateNext() {
       this.nextBtnTxt = 'Next';
       if (this.$route.name === 'firstStep') {
-        this.$router.push('/card/2');
+        this.$router.push({ name: 'secondStep' });
       } else if (this.$route.name === 'secondStep') {
-        this.$router.push('/card/3');
+        this.$router.push({ name: 'thirdStep' });
       } else {
-        this.nextBtnTxt = 'Terminer' && this.$router.push('/');
+        this.nextBtnTxt = 'Terminer' && this.$router.push({ name: 'home' });
       }
     },
     navigatePrev() {
       this.nextBtnTxt = 'Previous';
       if (this.$route.name === 'firstStep') {
-        this.$router.push('/');
+        this.$router.push({ name: 'home' });
       }
       this.nextBtnTxt = 'Next';
       if (this.$route.name === 'thirdStep') {
-        this.$router.push('/card/2');
+        this.$router.push({ name: 'secondStep' });
       } else if (this.$route.name === 'secondStep') {
-        this.$router.push('/card/1');
+        this.$router.push({ name: 'firstStep' });
       }
     },
   },

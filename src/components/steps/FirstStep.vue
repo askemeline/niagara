@@ -59,5 +59,3 @@ export default {
   },
 };
 </script>
-setGenderMutation(state, gender){ state.gender = gender; }, setGenderAction(context, gender){
-context.commit('setGenderMutation', gender); },
