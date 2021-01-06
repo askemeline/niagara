@@ -1,13 +1,7 @@
 <template>
   <div class="home">
     <h1>Bienvenue dans Niagara</h1>
-    <div class="d-flex">
-      <v-container>
-        <v-col class="d-flex" sm="3">
-          <v-select filled label="Filtre" :items="items"></v-select>
-        </v-col>
-       <p>{{team}}</p>
-      </v-container>
+    <div class="d-flex justify-center align-center flex-column">
       <v-btn
         @click="$router.push({ name: 'firstStep' })"
         elevation="2"
@@ -33,6 +27,7 @@ export default {
   },
   data: () => ({
     items: ['Logistique', 'Production', 'Qualité', 'Maintenance'],
+    value: '',
   }),
   computed: {
     ...mapGetters({

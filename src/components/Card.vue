@@ -13,7 +13,9 @@
         <v-chip>{{ card.team }}</v-chip>
       </v-chip-group>
     </v-card>
-    <div>hey{{ JSON.stringify(cards) }}</div>
+    <div v-if="!cards.length">
+      <p><b>Veuillez ajouter une nouvelle carte</b></p>
+    </div>
   </div>
 </template>
 

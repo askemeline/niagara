@@ -8,7 +8,7 @@ export default new Vuex.Store({
     format: '',
     nameCard: null,
     selectDate: { year: null, month: null, date: null },
-    team: ['logistique', 'production', 'qualité', 'maintenance'],
+    team: [],
     action: '',
     cards: [],
   },
@@ -38,6 +38,12 @@ export default new Vuex.Store({
     formattedDate: (state) => (state.selectDate.year !== null && state.selectDate.month !== null && state.selectDate.date !== null ? `Vous avez selectionner le ${state.selectDate.date}/${state.selectDate.month + 1}/${state.selectDate.year}` : ''),
   },
   actions: {
+    // getCard({ commit }, cards) {
+    //   commit('GET_CARD', cards);
+    // },
+    // addCard(context, payload) {
+    //   context.commit('ADD_CARD', payload);
+    // },
     addCard(context, payload) {
       context.commit('ADD_CARD', payload);
     },
