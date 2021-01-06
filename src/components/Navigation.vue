@@ -1,20 +1,25 @@
 <template>
   <v-footer fixed padless class="d-flex justify-space-around" style="height:100px">
     <v-btn @click="navigatePrev" elevation="2" rounded> &#8592; Précédent</v-btn>
-    <v-btn color="primary" elevation="2" rounded @click="navigateNext"> {{ nextBtnTxt() }}</v-btn>
+    <v-btn color="primary" elevation="2" rounded @click="navigateNext"> {{ nextBtnTxt }}</v-btn>
   </v-footer>
 </template>
 <script>
 export default {
-  computed: {},
-  methods: {
-    nextBtnTxt() {
-      if (this.$route.name === 'thirdStep') {
-        return 'Terminer';
-      }
-      return 'Suivant';
+  computed: {
+    nextBtnTxt: {
+      get() {
+        if (this.$route.name === 'thirdStep') {
+          return 'Terminer';
+        }
+        return 'Suivant';
+      },
+      set(value) {
+        return value;
+      },
     },
-
+  },
+  methods: {
     navigateNext(val) {
       this.nextBtnTxt = 'Next';
       if (this.$route.name === 'firstStep') {
