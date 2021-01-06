@@ -1,23 +1,37 @@
-<template>
+<template class="margin-step">
   <div>
     <Steppers e1="3"></Steppers>
-    <h1>Selectionnez le déclencheur</h1>
-    <div style="margin-bottom: 20px;">
-      <p>Choissisez le type de déclencheur pour mettre à jour les données</p>
-      <select v-model="action" class="select">
-        <label>Selectionner l'étiquettes à l'équipe</label>
-        <option value="manuel">Manuel</option>
-        <option value="action">Action prédefinie</option>
-        <option value="calendaire">Calendaire</option>
-      </select>
-    </div>
-    <div>
-      <p>
-        Choissiez la date de mise à jour attendue (pour envoyer une alerte en cas de non
-        réalisation)
-      </p>
-      <SingleDatePicker :first-day-of-week="1" @selectDate="selectDate" />
-      <p>{{ formattedDate }}</p>
+    <div class="margin-step">
+      <h1>Selectionnez le déclencheur</h1>
+      <div class="d-flex justify-center align-center flex-column margin-bottom">
+        <div class="margin-bottom margin-top">
+        <p><b>Choissisez le type de déclencheur pour mettre à jour les données</b></p>
+        </div>
+        <v-select
+          filled
+          label="Type de déclencheur"
+          :items="items"
+          v-model="action"
+          class="select-team"
+        ></v-select>
+      </div>
+      <div>
+        <div class="d-flex justify-center align-center flex-column">
+          <div class="margin-bottom">
+            <p>
+              <b
+                >Choissiez la date de mise à jour attendue (pour envoyer une alerte en cas de non
+                réalisation)</b
+              >
+            </p>
+          </div>
+          <SingleDatePicker :first-day-of-week="1" @selectDate="selectDate" />
+          <p v-if="formattedDate" class="margin-top">
+            <b>{{ formattedDate }}</b>
+          </p>
+          <p v-else class="margin-top"><b>Veuillez selectionner une date</b></p>
+        </div>
+      </div>
     </div>
     <Navigation></Navigation>
   </div>
@@ -35,6 +49,9 @@ export default {
       this.$store.commit('setSelectDate', { selectDate: value });
     },
   },
+  data: () => ({
+    items: ['Manuel', 'Action', 'Calendaire'],
+  }),
   computed: {
     ...mapGetters(['formattedDate']),
 
@@ -72,5 +89,11 @@ export default {
   background-color: #eeeeee;
   border-style: none;
   width: 400px;
+}
+.margin-top {
+  margin-top: 20px;
+}
+.margin-bottom {
+  margin-bottom: 20px;
 }
 </style>

@@ -1,6 +1,7 @@
-<template>
+<template class="margin-step">
   <div>
     <Steppers e1="1"></Steppers>
+    <div class="margin-step">
     <h1>Selectionner le format d'entrée</h1>
     <v-container>
       <v-row justify="space-around">
@@ -37,6 +38,7 @@
         </v-radio-group>
       </v-row>
     </v-container>
+    </div>
     <Navigation></Navigation>
   </div>
 </template>

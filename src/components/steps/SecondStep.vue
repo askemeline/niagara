@@ -1,36 +1,42 @@
 <template>
-  <div class="second">
+  <div>
     <Steppers e1="2"></Steppers>
-    <h1>Renseignez la carte</h1>
-    <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="dropzone">
-      <div class="dropzone-custom-content flex">
-        <div class="img"></div>
+    <div class="margin-step">
+      <h1>Renseignez la carte</h1>
+      <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="dropzone">
+        <div class="dropzone-custom-content flex">
+          <div class="img"></div>
+          <div>
+            <h3 class="dropzone-custom-title">Glisser et déposer vos fichier ici</h3>
+            <p class="subtitle">Ou cherche un fichier</p>
+          </div>
+        </div>
+      </vue-dropzone>
+      <div style="margin-bottom: 20px;" class="d-flex justify-center align-center flex-column">
+        <p><b>Donner un nom a votre carte</b></p>
+        <v-text-field
+          name="nameCard"
+          v-model="nameCard"
+          class="input"
+          label="Données de production des pommes"
+        />
+      </div>
+      <div class="d-flex justify-center align-center flex-column">
+        <p><b>Ajouter des étiquettes à l'équipe</b></p>
         <div>
-          <h3 class="dropzone-custom-title">Glisser et déposer vos fichier ici</h3>
-          <p class="subtitle">Ou cherche un fichier</p>
+          <v-col class="d-flex">
+            <v-select
+              filled
+              label="Selectionner"
+              :items="items"
+              v-model="team"
+              class="select-team"
+            ></v-select>
+          </v-col>
         </div>
       </div>
-    </vue-dropzone>
-    <div style="margin-bottom: 20px;">
-      <p>Donner un nom a votre carte</p>
-      <input
-        type="text"
-        name="nameCard"
-        v-model="nameCard"
-        class="input"
-        placeholder="Données de production des pommes"
-      />
     </div>
-    <div class="d-flex justify-center align-center flex-column">
-      <p>Ajouter des étiquettes à l'équipe</p>
-      <p>Hey {{ val }}</p>
-      <div>
-        <v-col class="d-flex">
-          <v-select filled label="Selectionner" :items="items" v-model="team"></v-select>
-        </v-col>
-      </div>
-    </div>
-    <Navigation ></Navigation>
+    <Navigation></Navigation>
   </div>
 </template>
 <script>
@@ -49,7 +55,6 @@ export default {
       thumbnailWidth: 200,
       addRemoveLinks: true,
     },
-    val: 'pad de msg',
   }),
   computed: {
     ...mapState({
@@ -73,8 +78,7 @@ export default {
       },
     },
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style>
@@ -111,18 +115,7 @@ export default {
   border-radius: 10px;
 }
 
-.select {
-  width: 100%;
-  min-width: 15ch;
-  max-width: 30ch;
-  border: 1px solid var(--select-border);
-  border-radius: 0.25em;
-  padding: 0.25em 0.5em;
-  font-size: 1.25rem;
-  cursor: pointer;
-  line-height: 1.1;
-  background-color: #eeeeee;
-  border-style: none;
+.select-team {
   width: 400px;
 }
 
@@ -134,7 +127,11 @@ export default {
   margin: 10px;
 }
 
-.second {
-  text-align: center;
+.margin-step {
+  height: 100%;
+
+}
+.v-application p {
+  margin-bottom: 0px;
 }
 </style>

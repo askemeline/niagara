@@ -1,5 +1,5 @@
 <template>
-  <v-footer padless fixed class="d-flex justify-space-around" style="height:100px">
+  <v-footer fixed padless class="d-flex justify-space-around" style="height:100px">
     <v-btn @click="navigatePrev" elevation="2" rounded> &#8592; Précédent</v-btn>
     <v-btn color="primary" elevation="2" rounded @click="navigateNext"> {{ nextBtnTxt() }}</v-btn>
   </v-footer>
@@ -57,7 +57,4 @@ export default {
   box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-.v-footer--fixed {
-  position: unset;
-}
 </style>

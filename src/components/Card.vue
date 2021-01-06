@@ -13,7 +13,7 @@
         <v-chip>{{ card.team }}</v-chip>
       </v-chip-group>
     </v-card>
-    <p>hey{{ JSON.stringify(cards) }}</p>
+    <div>hey{{ JSON.stringify(cards) }}</div>
   </div>
 </template>
 
