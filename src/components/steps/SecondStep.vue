@@ -34,9 +34,7 @@
   </div>
 </template>
 <script>
-// import { mapState } from 'vuex';
 import { mapState } from 'vuex';
-// import _ from 'lodash';
 import vue2Dropzone from 'vue2-dropzone';
 import Navigation from '../Navigation.vue';
 import Steppers from '../Steppers.vue';
@@ -44,11 +42,6 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 
 export default {
   components: { Navigation, Steppers, vueDropzone: vue2Dropzone },
-  // data() {
-  //   return {
-  //     items: ['Logistique', 'Production', 'Qualité', 'Maintenance'],
-  //   };
-  // },
   data: () => ({
     items: ['Logistique', 'Production', 'Qualité', 'Maintenance'],
     dropzoneOptions: {
@@ -63,13 +56,6 @@ export default {
       team: (state) => state.team,
       nameCard: (state) => state.nameCard,
     }),
-
-    // newCard() {
-    //   return this.$store.getters.newCard;
-    // },
-    // getTeam() {
-    //   return this.$store.state.team;
-    // },
     nameCard: {
       get() {
         return this.$store.nameCard;
@@ -88,24 +74,6 @@ export default {
     },
   },
   methods: {
-
-    // saveData(payload) {
-    //   this.message = payload.message;
-    //   const { team } = this.$store.state;
-    //   const { nameCard } = this.$store.state;
-    //   const concat = { team, nameCard };
-
-    //   this.$store.dispatch('addCard', concat);
-    //   console.log(this.$store.getters.getCard);
-    //   // console.log(this.message);
-    // },
-    // save() {
-    //   const { team } = this.$store.state;
-    //   const { nameCard } = this.$store.state;
-    //   const concat = { team, nameCard };
-
-    //   this.$store.dispatch('addCard', concat);
-    // },
   },
 };
 </script>

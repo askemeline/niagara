@@ -100,11 +100,11 @@ export default {
   margin-right: 20px;
 }
 
-.margin-bot{
+.margin-bot {
   margin-bottom: 40px;
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
 </style>

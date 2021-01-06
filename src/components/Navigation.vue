@@ -1,37 +1,13 @@
 <template>
   <v-footer padless fixed class="d-flex justify-space-around" style="height:100px">
-      <v-btn
-        @click="navigatePrev"
-        elevation="2"
-        rounded
-    > &#8592; Précédent</v-btn>
-      <v-btn
-        color="primary"
-        elevation="2"
-        rounded
-        @click="navigateNext"
-    >  {{ nextBtnTxt() }}</v-btn>
-       <!-- <p>helloe</p> {{getTeam}} -->
+    <v-btn @click="navigatePrev" elevation="2" rounded> &#8592; Précédent</v-btn>
+    <v-btn color="primary" elevation="2" rounded @click="navigateNext"> {{ nextBtnTxt() }}</v-btn>
   </v-footer>
 </template>
 <script>
-// import { mapGetters } from 'vuex';
-
 export default {
-  data() {
-    return {};
-  },
-  computed: {
-    // ...mapGetters(['formattedDate']),
-    // ...mapGetters({
-    //   team: (state) => state.team,
-    // }),
-  },
-  // getTeam() {
-  //   return this.$store.state.team;
-  // },
+  computed: {},
   methods: {
-
     nextBtnTxt() {
       if (this.$route.name === 'thirdStep') {
         return 'Terminer';
@@ -47,9 +23,16 @@ export default {
         this.$emit('btn', val);
         this.$router.push({ name: 'thirdStep' });
       } else {
-        const { team, nameCard } = this.$store.state;
-        const concat = { team, nameCard };
-        console.log('test');
+        const {
+          team, nameCard, format, selectDate, action,
+        } = this.$store.state;
+        const concat = {
+          team,
+          nameCard,
+          format,
+          selectDate,
+          action,
+        };
         this.$store.dispatch('addCard', concat);
         this.nextBtnTxt = 'Terminer' && this.$router.push({ name: 'home' });
       }
@@ -70,11 +53,11 @@ export default {
 };
 </script>
 <style>
-.v-sheet.v-footer:not(.v-sheet--outlined){
-    box-shadow: 3px 2px 6px rgba(0,0,0,0.5);
+.v-sheet.v-footer:not(.v-sheet--outlined) {
+  box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-.v-footer--fixed{
+.v-footer--fixed {
   position: unset;
 }
 </style>

@@ -38,9 +38,6 @@ export default {
     ...mapGetters({
       team: (state) => state.team,
     }),
-    // getTeam() {
-    //   return this.$store.state.team;
-    // },
     team: {
       get() {
         return this.$store.action;

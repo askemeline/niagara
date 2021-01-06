@@ -1,24 +1,26 @@
 <template>
-    <div>
+  <div>
     <Steppers e1="3"></Steppers>
     <h1>Selectionnez le déclencheur</h1>
     <div style="margin-bottom: 20px;">
-        <p>Choissisez le type de déclencheur pour mettre à jour les données</p>
-        <select v-model="action" class="select">
+      <p>Choissisez le type de déclencheur pour mettre à jour les données</p>
+      <select v-model="action" class="select">
         <label>Selectionner l'étiquettes à l'équipe</label>
         <option value="manuel">Manuel</option>
-        <option value="action" >Action prédefinie</option>
-        <option value="calendaire" >Calendaire</option>
+        <option value="action">Action prédefinie</option>
+        <option value="calendaire">Calendaire</option>
       </select>
-      </div>
+    </div>
     <div>
-        <p>Choissiez la date de mise à jour attendue
-            (pour envoyer une alerte en cas de non réalisation)</p>
-        <SingleDatePicker :first-day-of-week=1 @selectDate="selectDate"/>
-    <p>{{formattedDate}}</p>
+      <p>
+        Choissiez la date de mise à jour attendue (pour envoyer une alerte en cas de non
+        réalisation)
+      </p>
+      <SingleDatePicker :first-day-of-week="1" @selectDate="selectDate" />
+      <p>{{ formattedDate }}</p>
     </div>
-        <Navigation></Navigation>
-    </div>
+    <Navigation></Navigation>
+  </div>
 </template>
 <script>
 import SingleDatePicker from 'vue-single-date-picker';
@@ -48,14 +50,14 @@ export default {
 };
 </script>
 <style>
-@import '~vue-single-date-picker/dist/vue-single-date-picker.css';
-.single-date-picker__calendar-month-header[data-v-1179a6d7]{
-    background-color: blue;
-    background-image: unset;
-    color: white;
+@import "~vue-single-date-picker/dist/vue-single-date-picker.css";
+.single-date-picker__calendar-month-header[data-v-1179a6d7] {
+  background-color: blue;
+  background-image: unset;
+  color: white;
 }
-#single-date-picker[data-v-61873592]{
-    margin:auto
+#single-date-picker[data-v-61873592] {
+  margin: auto;
 }
 .select {
   width: 100%;

@@ -54,7 +54,6 @@ export default {
       },
       set(value) {
         this.$store.commit('setFormat', { format: value });
-        // this.$store.dispatch('addCard', { format: value });
       },
     },
   },

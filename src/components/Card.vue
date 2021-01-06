@@ -13,7 +13,7 @@
         <v-chip>{{ card.team }}</v-chip>
       </v-chip-group>
     </v-card>
-    {{ card }}
+    <p>hey{{ JSON.stringify(cards) }}</p>
   </div>
 </template>
 
@@ -22,10 +22,7 @@ import { mapState } from 'vuex';
 
 export default {
   computed: {
-    ...mapState(['nameCard', 'team', 'card']),
-    cards() {
-      return this.$store.getters.getCard;
-    },
+    ...mapState(['nameCard', 'team', 'cards']),
   },
 };
 </script>
