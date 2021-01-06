@@ -1,5 +1,5 @@
 <template>
-  <div class="md-stepper-horizontal margin-bot">
+  <div class="md-stepper-horizontal margin-bot text-center">
     <div :class="e1 === '1' ? 'active' : ''" class="md-step">
       <div class="md-step-circle"><span>1</span></div>
       <div :class="e1 === '1' ? 'active' : ''" class="md-step-title">Etape 1</div>
@@ -102,5 +102,9 @@ export default {
 
 .margin-bot{
   margin-bottom: 40px;
+}
+
+.text-center{
+  text-align: center;
 }
 </style>

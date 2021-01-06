@@ -8,9 +8,10 @@ export default new Vuex.Store({
     format: '',
     nameCard: null,
     selectDate: { year: null, month: null, date: null },
-    team: '',
+    team: ['logistique', 'production', 'qualité', 'maintenance'],
     action: '',
     cards: [],
+    // newCard: '',
   },
   mutations: {
     setNameCard(state, payload) {
@@ -28,9 +29,27 @@ export default new Vuex.Store({
     setAction(state, payload) {
       state.action = payload.actions;
     },
+    getCard(state, todo) {
+      state.newCard = todo;
+    },
+    ADD_CARD(state, payload) {
+      const newCard = payload;
+      state.cards.push(newCard);
+    },
   },
   getters: {
+    getCard: (state) => state.cards,
     formattedDate: (state) => (state.selectDate.year !== null && state.selectDate.month !== null && state.selectDate.date !== null ? `Vous avez selectionner le ${state.selectDate.date}/${state.selectDate.month + 1}/${state.selectDate.year}` : ''),
   },
-  actions: {},
+  actions: {
+    // getCard({ commit }, cards) {
+    //   commit('GET_CARD', cards);
+    // },
+    // addCard(context, payload) {
+    //   context.commit('ADD_CARD', payload);
+    // },
+    addCard(context, payload) {
+      context.commit('ADD_CARD', payload);
+    },
+  },
 });

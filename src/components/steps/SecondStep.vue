@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="second">
     <Steppers e1="2"></Steppers>
     <h1>Renseignez la carte</h1>
     <vue-dropzone :options="dropzoneOptions" :useCustomSlot="true" id="dropzone">
@@ -17,30 +17,26 @@
         type="text"
         name="nameCard"
         v-model="nameCard"
+        class="input"
         placeholder="Données de production des pommes"
-        style="
-          background-color: #EEEEEE;
-          border-style: none;
-          width: 400px;
-          padding: 10px;
-          margin: 10px;"
       />
     </div>
-
-    <div>
+    <div class="d-flex justify-center align-center flex-column">
       <p>Ajouter des étiquettes à l'équipe</p>
-      <select v-model="team" class="select">
-        <label>Selectionner l'étiquettes à l'équipe</label>
-        <option value="logistique" selected>logistique</option>
-        <option value="production" >production</option>
-        <option value="qualité" >qualité</option>
-        <option value="maintenance" >maintenance</option>
-      </select>
+      <p>Hey {{ val }}</p>
+      <div>
+        <v-col class="d-flex">
+          <v-select filled label="Selectionner" :items="items" v-model="team"></v-select>
+        </v-col>
+      </div>
     </div>
-    <Navigation></Navigation>
+    <Navigation ></Navigation>
   </div>
 </template>
 <script>
+// import { mapState } from 'vuex';
+import { mapState } from 'vuex';
+// import _ from 'lodash';
 import vue2Dropzone from 'vue2-dropzone';
 import Navigation from '../Navigation.vue';
 import Steppers from '../Steppers.vue';
@@ -48,16 +44,32 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 
 export default {
   components: { Navigation, Steppers, vueDropzone: vue2Dropzone },
-  data() {
-    return {
-      dropzoneOptions: {
-        url: 'https://httpbin.org/post',
-        thumbnailWidth: 200,
-        addRemoveLinks: true,
-      },
-    };
-  },
+  // data() {
+  //   return {
+  //     items: ['Logistique', 'Production', 'Qualité', 'Maintenance'],
+  //   };
+  // },
+  data: () => ({
+    items: ['Logistique', 'Production', 'Qualité', 'Maintenance'],
+    dropzoneOptions: {
+      url: 'https://httpbin.org/post',
+      thumbnailWidth: 200,
+      addRemoveLinks: true,
+    },
+    val: 'pad de msg',
+  }),
   computed: {
+    ...mapState({
+      team: (state) => state.team,
+      nameCard: (state) => state.nameCard,
+    }),
+
+    // newCard() {
+    //   return this.$store.getters.newCard;
+    // },
+    // getTeam() {
+    //   return this.$store.state.team;
+    // },
     nameCard: {
       get() {
         return this.$store.nameCard;
@@ -74,6 +86,26 @@ export default {
         this.$store.commit('setTeam', { team: value });
       },
     },
+  },
+  methods: {
+
+    // saveData(payload) {
+    //   this.message = payload.message;
+    //   const { team } = this.$store.state;
+    //   const { nameCard } = this.$store.state;
+    //   const concat = { team, nameCard };
+
+    //   this.$store.dispatch('addCard', concat);
+    //   console.log(this.$store.getters.getCard);
+    //   // console.log(this.message);
+    // },
+    // save() {
+    //   const { team } = this.$store.state;
+    //   const { nameCard } = this.$store.state;
+    //   const concat = { team, nameCard };
+
+    //   this.$store.dispatch('addCard', concat);
+    // },
   },
 };
 </script>
@@ -126,4 +158,15 @@ export default {
   width: 400px;
 }
 
+.input {
+  background-color: #eeeeee;
+  border-style: none;
+  width: 400px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.second {
+  text-align: center;
+}
 </style>

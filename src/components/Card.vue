@@ -2,17 +2,18 @@
   <div>
     <v-card
       elevation="2"
-      class="d-flex align-center justify-space-between pa-6"
+      class="d-flex align-center justify-space-between pa-6 margin"
+      v-for="(card, key) in cards"
+      :key="key"
     >
       <div>
-        <p v-if="nameCard" class="font-weight-black">{{nameCard}}</p>
-        <p v-else class="font-weight-black">Pas de donnée</p>
+        <p>{{ card.nameCard }}</p>
       </div>
       <v-chip-group column>
-        <v-chip v-if="nameCard">{{nameCard}}</v-chip>
-        <v-chip v-else>Pas de donnée</v-chip>
+        <v-chip>{{ card.team }}</v-chip>
       </v-chip-group>
     </v-card>
+    {{ card }}
   </div>
 </template>
 
@@ -21,7 +22,15 @@ import { mapState } from 'vuex';
 
 export default {
   computed: {
-    ...mapState(['nameCard', 'team']),
+    ...mapState(['nameCard', 'team', 'card']),
+    cards() {
+      return this.$store.getters.getCard;
+    },
   },
 };
 </script>
+<style>
+.margin {
+  margin: 30px 0;
+}
+</style>
